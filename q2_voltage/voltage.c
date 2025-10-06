@@ -17,9 +17,13 @@
  * @return 1 if valid, 0 if invalid
  */
 int is_valid_voltage(float voltage) {
-    // TODO: Implement voltage validation logic
-    return -1;  // Placeholder to fail all tests
+    // Check if voltage is outside the valid range (1.8V to 3.3V)
+    if (voltage > 3.3 || voltage < 1.8) {
+        return -1;  // Invalid
+    }
+    return 0; // Valid
 }
+
 
 #ifndef UNIT_TEST
 int main(void) {
@@ -30,9 +34,14 @@ int main(void) {
     printf("Voltage Validator for Post-Silicon Testing\n");
     printf("Valid range: %.1fV to %.1fV\n", voltage_min, voltage_max);
 
-    // TODO: Read input and validate
     printf("Enter measured voltage: ");
-    // scanf("%f", &measured_voltage);  // Uncomment and use
+    scanf("%f", &measured_voltage);
+
+    if (is_valid_voltage(measured_voltage) == 0) {
+        printf("PASS!\n");
+    } else {
+        printf("FAILED\n");
+    }
 
     return 0;
 }
