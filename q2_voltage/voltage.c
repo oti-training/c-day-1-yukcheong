@@ -19,7 +19,7 @@
 int is_valid_voltage(float voltage) {
     // Check if voltage is outside the valid range (1.8V to 3.3V)
     if (voltage > 3.3f || voltage < 1.8f) {
-        return -1;  // Invalid
+        return 1;  // Invalid
     }
     return 0; // Valid
 }
